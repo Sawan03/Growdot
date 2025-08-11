@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DotGrow Digital Agency - Your Growth Starts Here</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="DotGrow" class="logo">
+                <span class="logo-text">DotGrow</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+                <a href="#about" class="nav-link">About Us</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">We Help Brands Grow Faster in the <span class="highlight">Digital Age</span></h1>
+                <p class="hero-subtitle">From strategy to execution, DotGrow Digital Agency delivers the tools, design, and automation you need to attract, convert, and scale - without the overwhelm.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="bookCall()">Start Your Free Discovery Call</button>
+                    <button class="btn btn-secondary" onclick="scrollToPackages()">View Our Packages</button>
+                </div>
+                <div class="hero-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-clock"></i>
+                        <span>7-15 Day Project Delivery</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Done-for-You Strategies</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Ongoing Growth Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Digital Growth Services Tailored to You</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Brand Strategy & Design</h3>
+                    <p>Create a powerful brand identity that resonates with your target audience and stands out in the market.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Engage your audience with compelling content and strategic social media campaigns that drive results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Website Development</h3>
+                    <p>Build responsive, high-converting websites with automation that work 24/7 to grow your business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Paid Ads & Funnel Optimization</h3>
+                    <p>Maximize ROI with targeted advertising campaigns and optimized conversion funnels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2 class="section-title">Choose Your Growth Package</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Starter Growth Package</h3>
+                        <p class="package-subtitle">Perfect for new brands</p>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Brand Strategy Session</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Logo & Visual Identity</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>5 Social Media Templates</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic Website (One-Page)</span>
+                        </div>
+                    </div>
+                    <div class="package-delivery">
+                        <i class="fas fa-clock"></i>
+                        <span>Delivery: 5 Days</span>
+                    </div>
+                    <button class="btn btn-outline" onclick="inquireService('Starter Package')">Get Started</button>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">RECOMMENDED</div>
+                    <div class="package-header">
+                        <h3>Business Growth Package</h3>
+                        <p class="package-subtitle">For scaling businesses</p>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Everything in Starter</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Social Media Management (1 Month)</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Blog/SEO Setup</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Email Marketing Setup</span>
+                        </div>
+                    </div>
+                    <div class="package-delivery">
+                        <i class="fas fa-clock"></i>
+                        <span>Delivery: 10-12 Days</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="inquireService('Business Growth Package')">Get Started</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Pro Growth Package</h3>
+                        <p class="package-subtitle">Full-service digital growth</p>
+                    </div>
+                    <div class="package-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Everything in Business</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Paid Ads Setup (Google/Facebook/Instagram)</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Funnel & Automation Build</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Ongoing Growth Support (1 Month)</span>
+                        </div>
+                    </div>
+                    <div class="package-delivery">
+                        <i class="fas fa-clock"></i>
+                        <span>Delivery: 12-15 Days</span>
+                    </div>
+                    <button class="btn btn-outline" onclick="inquireService('Pro Growth Package')">Get Started</button>
+                </div>
+            </div>
+            <div class="special-offer">
+                <div class="offer-card">
+                    <h3>Special Offer!</h3>
+                    <p>Get Premium Package for consecutive 5 months and get 6th month package services for <span class="highlight">25% off</span></p>
+                    <button class="btn btn-primary" onclick="inquireService('Special Offer Package')">Claim Offer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">From Ideas to Impact - See What We've Built</h2>
+            <p class="section-subtitle">We've helped startups, creators, and small businesses turn their ideas into scalable digital brands. Here's a peek at our recent projects.</p>
+            
+            <div class="portfolio-tabs">
+                <button class="tab-btn active" onclick="filterPortfolio('all')">All Projects</button>
+                <button class="tab-btn" onclick="filterPortfolio('branding')">Branding & Design</button>
+                <button class="tab-btn" onclick="filterPortfolio('social')">Social Media</button>
+                <button class="tab-btn" onclick="filterPortfolio('websites')">Websites & Funnels</button>
+                <button class="tab-btn" onclick="filterPortfolio('ads')">Paid Advertising</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="placeholder-img">Brand Design</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Bloom Skincare</h3>
+                        <p>Complete brand identity redesign with visual guidelines</p>
+                        <span class="portfolio-tag">Branding</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="social">
+                    <div class="portfolio-image">
+                        <div class="placeholder-img">Social Campaign</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tech Startup Campaign</h3>
+                        <p>3-month social media strategy that increased engagement by 300%</p>
+                        <span class="portfolio-tag">Social Media</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="websites">
+                    <div class="portfolio-image">
+                        <div class="placeholder-img">Website Design</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce Platform</h3>
+                        <p>High-converting e-commerce site with automated marketing funnels</p>
+                        <span class="portfolio-tag">Website</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-content">
+                    <h3>Case Study: Bloom Skincare</h3>
+                    <div class="case-details">
+                        <div class="case-item">
+                            <strong>Challenge:</strong> Low social engagement & sales
+                        </div>
+                        <div class="case-item">
+                            <strong>Solution:</strong> Rebranded visuals + 3-month content plan + Instagram ads
+                        </div>
+                        <div class="case-item">
+                            <strong>Result:</strong> 2.3x sales growth in 60 days
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" onclick="viewFullPortfolio()">View Full Portfolio</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="placeholder-avatar">SM</div>
+                    </div>
+                    <h3>Shubham Mishra</h3>
+                    <p class="member-role">Founder - Strategy & Creative Direction</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="placeholder-avatar">SS</div>
+                    </div>
+                    <h3>Swarnika Srivastava</h3>
+                    <p class="member-role">Co-Founder - Operations & Automation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">We're ready when you are.</h2>
+            <p class="section-subtitle">Book a free discovery call or send us your ideas - we'll reply within 24 hours with your next steps.</p>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="business" name="business" placeholder="Business Name">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Message / Project Details" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>Dotdigitagency@gmail.com</p>
+                            <p>contact@dotdigitalagency.in</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <p>WhatsApp: +91 97738 63151</p>
+                            <p>+91 80040 15099</p>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <button class="btn btn-primary" onclick="bookCall()">Book My Free Call</button>
+                        <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Us
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">DotGrow Digital Agency</span>
+                    <p>Growing brands in the digital age</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#packages">Packages</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DotGrow Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
