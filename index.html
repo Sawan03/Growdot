@@ -1,455 +1,994 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DotGrow Digital Agency - Your Growth Starts Here</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="img/gotgrow-removebg-preview.png" alt="DotGrow" class="logo">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DotGrow Digital Agency - Your Growth Starts Here</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
+
+    <style>
+        
+
+/* Additional CSS for floating actions and notifications */
+.floating-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-btn.main-btn {
+    background: #667eea;
+    position: relative;
+    z-index: 2;
+}
+
+.floating-btn.main-btn:hover {
+    background: #5a6fd8;
+    transform: scale(1.1);
+}
+
+.floating-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+}
+
+.floating-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.floating-menu .floating-btn {
+    background: #333;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    animation: bounceIn 0.3s ease;
+}
+
+.floating-menu .floating-btn:nth-child(1) { animation-delay: 0.1s; background: #667eea; }
+.floating-menu .floating-btn:nth-child(2) { animation-delay: 0.2s; background: #764ba2; }
+.floating-menu .floating-btn:nth-child(3) { animation-delay: 0.3s; background: #25D366; }
+.floating-menu .floating-btn:nth-child(4) { animation-delay: 0.4s; background: #007BFF; }
+
+.floating-menu .floating-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Animations for notifications */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mobile responsiveness for floating buttons */
+@media (max-width: 768px) {
+    .floating-actions {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .floating-btn.main-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+}
+</style>
+
+    </style>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="img/gotgrow-removebg-preview.png" alt="DotGrow" class="logo">
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#packages" class="nav-link">Packages</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#contact" class="nav-link">Contact Us</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#affiliate" class="nav-link affiliate-link">
+                        <i class="fas fa-users"></i> Affiliate Program
+                    </a>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#packages" class="nav-link">Packages</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
-                <a href="#about" class="nav-link">About Us</a>
-                <a href="#affiliate" class="nav-link affiliate-link">
-                    <i class="fas fa-users"></i> Affiliate Program
-                </a>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">We Help Brands Grow Faster in the <span class="highlight">Digital Age</span></h1>
+                    <p class="hero-subtitle">From strategy to execution, DotGrow Digital Agency delivers the tools, design, and automation you need to attract, convert, and scale - without the overwhelm.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="bookCall()">Start Your Free Discovery Call</button>
+                        <button class="btn btn-secondary" onclick="scrollToPackages()">View Our Packages</button>
+                    </div>
+                    <div class="hero-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-clock"></i>
+                            <span>7-15 Day Project Delivery</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Done-for-You Strategies</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Ongoing Growth Support</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Digital Growth Services Tailored to You</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Brand Strategy & Design</h3>
+                        <p>Create a powerful brand identity that resonates with your target audience and stands out in the market.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Social Media Marketing</h3>
+                        <p>Engage your audience with compelling content and strategic social media campaigns that drive results.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Website Development</h3>
+                        <p>Build responsive, high-converting websites with automation that work 24/7 to grow your business.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Paid Ads & Funnel Optimization</h3>
+                        <p>Maximize ROI with targeted advertising campaigns and optimized conversion funnels.</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="packages">
+            <div class="container">
+                <h2 class="section-title">Choose Your Growth Package</h2>
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>Starter Growth Package</h3>
+                            <p class="package-subtitle">Perfect for new brands</p>
+                        </div>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Brand Strategy Session</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Logo & Visual Identity</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>5 Social Media Templates</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Basic Website (One-Page)</span>
+                            </div>
+                        </div>
+                        <div class="package-delivery">
+                            <i class="fas fa-clock"></i>
+                            <span>Delivery: 5 Days</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="inquireService('Starter Package')">Get Started</button>
+                    </div>
+
+                    <div class="package-card featured">
+                        <div class="package-badge">RECOMMENDED</div>
+                        <div class="package-header">
+                            <h3>Business Growth Package</h3>
+                            <p class="package-subtitle">For scaling businesses</p>
+                        </div>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Everything in Starter</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Social Media Management (1 Month)</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Blog/SEO Setup</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Email Marketing Setup</span>
+                            </div>
+                        </div>
+                        <div class="package-delivery">
+                            <i class="fas fa-clock"></i>
+                            <span>Delivery: 10-12 Days</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="inquireService('Business Growth Package')">Get Started</button>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3>Pro Growth Package</h3>
+                            <p class="package-subtitle">Full-service digital growth</p>
+                        </div>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Everything in Business</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Paid Ads Setup (Google/Facebook/Instagram)</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Funnel & Automation Build</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ongoing Growth Support (1 Month)</span>
+                            </div>
+                        </div>
+                        <div class="package-delivery">
+                            <i class="fas fa-clock"></i>
+                            <span>Delivery: 12-15 Days</span>
+                        </div>
+                        <button class="btn btn-outline" onclick="inquireService('Pro Growth Package')">Get Started</button>
+                    </div>
+                </div>
+                <div class="special-offer">
+                    <div class="offer-card">
+                        <h3>Special Offer!</h3>
+                        <p>Get Premium Package for consecutive 5 months and get 6th month package services for <span class="highlight">25% off</span></p>
+                        <button class="btn btn-primary" onclick="inquireService('Special Offer Package')">Claim Offer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add these modal structures to your HTML body, preferably before the closing </body> tag -->
+
+<!-- Requirements & Budget Form Modal -->
+<div id="requirements-modal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal('requirements-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Tell Us About Your Project</h2>
+            <p class="modal-subtitle">Help us understand your requirements and budget</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">We Help Brands Grow Faster in the <span class="highlight">Digital Age</span></h1>
-                <p class="hero-subtitle">From strategy to execution, DotGrow Digital Agency delivers the tools, design, and automation you need to attract, convert, and scale - without the overwhelm.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="bookCall()">Start Your Free Discovery Call</button>
-                    <button class="btn btn-secondary" onclick="scrollToPackages()">View Our Packages</button>
+        <div class="modal-body">
+            <!-- Progress Indicator -->
+            <div class="form-progress">
+                <div class="progress-step active">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Basic Info</div>
                 </div>
-                <div class="hero-highlights">
-                    <div class="highlight-item">
-                        <i class="fas fa-clock"></i>
-                        <span>7-15 Day Project Delivery</span>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Done-for-You Strategies</span>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Ongoing Growth Support</span>
-                    </div>
+                <div class="progress-step">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Requirements</div>
+                </div>
+                <div class="progress-step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Budget & Timeline</div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Digital Growth Services Tailored to You</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Brand Strategy & Design</h3>
-                    <p>Create a powerful brand identity that resonates with your target audience and stands out in the market.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Social Media Marketing</h3>
-                    <p>Engage your audience with compelling content and strategic social media campaigns that drive results.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Website Development</h3>
-                    <p>Build responsive, high-converting websites with automation that work 24/7 to grow your business.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Paid Ads & Funnel Optimization</h3>
-                    <p>Maximize ROI with targeted advertising campaigns and optimized conversion funnels.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section id="packages" class="packages">
-        <div class="container">
-            <h2 class="section-title">Choose Your Growth Package</h2>
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>Starter Growth Package</h3>
-                        <p class="package-subtitle">Perfect for new brands</p>
-                    </div>
-                    <div class="package-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Brand Strategy Session</span>
+            <form id="requirements-form" class="requirements-form">
+                <!-- Step 1: Basic Information -->
+                <div id="step-1" class="form-step active">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="req-name">Full Name *</label>
+                                <input type="text" id="req-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="req-email">Email Address *</label>
+                                <input type="email" id="req-email" name="email" required>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Logo & Visual Identity</span>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="req-phone">Phone Number *</label>
+                                <input type="tel" id="req-phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="req-business">Business/Company Name</label>
+                                <input type="text" id="req-business" name="business">
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>5 Social Media Templates</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Basic Website (One-Page)</span>
+                        <div class="form-group">
+                            <label for="current-website">Current Website (if any)</label>
+                            <input type="url" id="current-website" name="current_website" placeholder="https://yourwebsite.com">
                         </div>
                     </div>
-                    <div class="package-delivery">
-                        <i class="fas fa-clock"></i>
-                        <span>Delivery: 5 Days</span>
-                    </div>
-                    <button class="btn btn-outline" onclick="inquireService('Starter Package')">Get Started</button>
                 </div>
 
-                <div class="package-card featured">
-                    <div class="package-badge">RECOMMENDED</div>
-                    <div class="package-header">
-                        <h3>Business Growth Package</h3>
-                        <p class="package-subtitle">For scaling businesses</p>
-                    </div>
-                    <div class="package-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Everything in Starter</span>
+                <!-- Step 2: Requirements & Services -->
+                <div id="step-2" class="form-step">
+                    <div class="form-section">
+                        <h3 class="form-section-title">What Services Do You Need?</h3>
+                        <div class="services-selection">
+                            <div class="service-option">
+                                <input type="checkbox" id="service-branding" name="services" value="Brand Strategy & Design" class="service-checkbox">
+                                <label for="service-branding" class="service-label">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Brand Strategy & Design
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service-social" name="services" value="Social Media Marketing" class="service-checkbox">
+                                <label for="service-social" class="service-label">
+                                    <i class="fas fa-share-alt"></i>
+                                    Social Media Marketing
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service-website" name="services" value="Website Development" class="service-checkbox">
+                                <label for="service-website" class="service-label">
+                                    <i class="fas fa-code"></i>
+                                    Website Development
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service-ads" name="services" value="Paid Ads & Funnel Optimization" class="service-checkbox">
+                                <label for="service-ads" class="service-label">
+                                    <i class="fas fa-bullhorn"></i>
+                                    Paid Ads & Funnels
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service-consultation" name="services" value="consultation" class="service-checkbox">
+                                <label for="service-consultation" class="service-label">
+                                    <i class="fas fa-phone"></i>
+                                    Free Consultation Call
+                                </label>
+                            </div>
+                            <div class="service-option">
+                                <input type="checkbox" id="service-other" name="services" value="other" class="service-checkbox">
+                                <label for="service-other" class="service-label">
+                                    <i class="fas fa-plus"></i>
+                                    Other Services
+                                </label>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Social Media Management (1 Month)</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Blog/SEO Setup</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Email Marketing Setup</span>
-                        </div>
-                    </div>
-                    <div class="package-delivery">
-                        <i class="fas fa-clock"></i>
-                        <span>Delivery: 10-12 Days</span>
-                    </div>
-                    <button class="btn btn-primary" onclick="inquireService('Business Growth Package')">Get Started</button>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3>Pro Growth Package</h3>
-                        <p class="package-subtitle">Full-service digital growth</p>
-                    </div>
-                    <div class="package-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Everything in Business</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Paid Ads Setup (Google/Facebook/Instagram)</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Funnel & Automation Build</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Ongoing Growth Support (1 Month)</span>
-                        </div>
-                    </div>
-                    <div class="package-delivery">
-                        <i class="fas fa-clock"></i>
-                        <span>Delivery: 12-15 Days</span>
-                    </div>
-                    <button class="btn btn-outline" onclick="inquireService('Pro Growth Package')">Get Started</button>
-                </div>
-            </div>
-            <div class="special-offer">
-                <div class="offer-card">
-                    <h3>Special Offer!</h3>
-                    <p>Get Premium Package for consecutive 5 months and get 6th month package services for <span class="highlight">25% off</span></p>
-                    <button class="btn btn-primary" onclick="inquireService('Special Offer Package')">Claim Offer</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Affiliate Program Section -->
-    <section id="affiliate" class="affiliate">
-        <div class="container">
-            <h2 class="section-title">Join Our Affiliate Program</h2>
-            <p class="section-subtitle">Earn commissions by referring clients to DotGrow Digital Agency</p>
-            
-            <div class="affiliate-content">
-                <div class="affiliate-info">
-                    <div class="affiliate-card">
-                        <div class="affiliate-icon">
-                            <i class="fas fa-percentage"></i>
-                        </div>
-                        <h3>Earn 15% Commission</h3>
-                        <p>Get 15% commission on every successful referral</p>
                     </div>
                     
-                    <div class="affiliate-card">
-                        <div class="affiliate-icon">
-                            <i class="fas fa-sitemap"></i>
+                    <div class="form-section">
+                        <h3 class="form-section-title">Project Description</h3>
+                        <div class="form-group">
+                            <label for="project-description">Describe your project in detail *</label>
+                            <textarea id="project-description" name="project_description" required placeholder="Tell us about your business, target audience, goals, and what you're looking to achieve..."></textarea>
                         </div>
-                        <h3>Multi-Level Structure</h3>
-                        <p>Build your network and earn from multiple levels</p>
+                        <div class="form-group">
+                            <label for="project-goals">What are your main goals?</label>
+                            <textarea id="project-goals" name="goals" placeholder="e.g., Increase sales, build brand awareness, generate leads, improve online presence..."></textarea>
+                        </div>
                     </div>
-                    
-                    <div class="affiliate-card">
-                        <div class="affiliate-icon">
-                            <i class="fas fa-money-bill-wave"></i>
+                </div>
+
+                <!-- Step 3: Budget & Timeline -->
+                <div id="step-3" class="form-step">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Budget & Timeline</h3>
+                        
+                        <div class="budget-slider">
+                            <label for="budget-slider">What's your budget range?</label>
+                            <div class="budget-display" id="budget-display">₹50,000</div>
+                            <div class="slider-container">
+                                <input type="range" id="budget-slider" name="budget" min="10000" max="1000000" value="50000" step="5000" class="budget-range">
+                                <div class="budget-labels">
+                                    <span>₹10K</span>
+                                    <span>₹25K</span>
+                                    <span>₹50K</span>
+                                    <span>₹1L</span>
+                                    <span>₹5L</span>
+                                    <span>₹10L+</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Monthly Payouts</h3>
-                        <p>Receive your commissions every month</p>
+                        
+                        <div class="form-group">
+                            <label>When do you want to start?</label>
+                            <div class="timeline-options">
+                                <div class="timeline-option">
+                                    <input type="radio" id="timeline-asap" name="timeline" value="ASAP" class="timeline-radio">
+                                    <label for="timeline-asap" class="timeline-label">ASAP</label>
+                                </div>
+                                <div class="timeline-option">
+                                    <input type="radio" id="timeline-week" name="timeline" value="Within a week" class="timeline-radio">
+                                    <label for="timeline-week" class="timeline-label">Within a week</label>
+                                </div>
+                                <div class="timeline-option">
+                                    <input type="radio" id="timeline-month" name="timeline" value="Within a month" class="timeline-radio">
+                                    <label for="timeline-month" class="timeline-label">Within a month</label>
+                                </div>
+                                <div class="timeline-option">
+                                    <input type="radio" id="timeline-planning" name="timeline" value="Just planning" class="timeline-radio">
+                                    <label for="timeline-planning" class="timeline-label">Just planning</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additional-info">Additional Information</label>
+                            <textarea id="additional-info" name="additional_info" placeholder="Any specific requirements, preferences, or questions?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden fields -->
+                <input type="hidden" id="selected-package" name="selected_package">
+                
+                <!-- Navigation Buttons -->
+                <div class="step-navigation">
+                    <button type="button" class="btn-prev" onclick="prevStep()" style="display: none;">Previous</button>
+                    <button type="button" class="btn-next" onclick="nextStep()">Next Step</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Affiliate Registration Modal -->
+<div id="affiliate-modal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal('affiliate-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Join Our Affiliate Program</h2>
+            <p class="modal-subtitle">Start earning commissions by referring clients to DotGrow</p>
+        </div>
+        <div class="modal-body">
+            <div class="affiliate-registration">
+                <form id="affiliate-registration-form">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aff-name">Full Name *</label>
+                                <input type="text" id="aff-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="aff-email">Email Address *</label>
+                                <input type="email" id="aff-email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aff-phone">Phone Number *</label>
+                                <input type="tel" id="aff-phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="aff-city">City</label>
+                                <input type="text" id="aff-city" name="city" placeholder="Your city">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="referral-section">
+                        <h4><i class="fas fa-link"></i> Referral Information</h4>
+                        <div class="form-group referral-code-input">
+                            <label for="referrer-code">Referrer Code (Optional)</label>
+                            <input type="text" id="referrer-code" name="referrer" placeholder="Enter referrer's code">
+                        </div>
+                        <div class="form-group">
+                            <label for="generated-referral-code">Your Referral Code</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" id="generated-referral-code" name="generated_referral_code" readonly>
+                                <button type="button" class="btn btn-outline copy-code-btn" onclick="copyReferralCode()">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">About Your Network</h3>
+                        <div class="form-group">
+                            <label for="experience">Tell us about your experience and network</label>
+                            <textarea id="experience" name="message" placeholder="Describe your experience in sales/marketing, your network size, social media following, etc."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="social-media">Primary Social Media Platform</label>
+                                <select id="social-media" name="social_platform">
+                                    <option value="">Select platform</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="linkedin">LinkedIn</option>
+                                    <option value="youtube">YouTube</option>
+                                    <option value="twitter">Twitter</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="followers">Approximate Followers/Network Size</label>
+                                <select id="followers" name="network_size">
+                                    <option value="">Select range</option>
+                                    <option value="0-1000">0 - 1,000</option>
+                                    <option value="1000-5000">1,000 - 5,000</option>
+                                    <option value="5000-10000">5,000 - 10,000</option>
+                                    <option value="10000-50000">10,000 - 50,000</option>
+                                    <option value="50000+">50,000+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Agreement</h3>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="terms_agreed" required>
+                            <span class="checkmark"></span>
+                            I agree to the affiliate program terms and conditions
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="marketing_emails">
+                            <span class="checkmark"></span>
+                            I want to receive marketing updates and affiliate tips
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                        <i class="fas fa-handshake"></i> Join Affiliate Program
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Team Structure Dashboard Modal -->
+<div id="team-dashboard-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 900px;">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal('team-dashboard-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Team Structure Dashboard</h2>
+            <p class="modal-subtitle">Manage your affiliate team and track performance</p>
+        </div>
+        <div class="modal-body">
+            <!-- Team Statistics -->
+            <div class="team-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="total-affiliates">0</span>
+                    <span class="stat-label">Total Affiliates</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="level1-count">0</span>
+                    <span class="stat-label">Level 1 Members</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="level2-count">0</span>
+                    <span class="stat-label">Level 2 Members</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="level3-count">0</span>
+                    <span class="stat-label">Level 3 Members</span>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="form-section">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="team-search" placeholder="Search team members..." onkeyup="searchTeamMembers(this.value)">
+                    </div>
+                    <div class="form-group">
+                        <select id="level-filter" onchange="filterByLevel(this.value)">
+                            <option value="all">All Levels</option>
+                            <option value="1">Level 1 (15%)</option>
+                            <option value="2">Level 2 (5%)</option>
+                            <option value="3">Level 3 (2%)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Structure Display -->
+            <div class="team-structure-display" id="team-structure-display">
+                <div class="hierarchy-title">Team Hierarchy</div>
+                
+                <!-- Team Members List -->
+                <div class="team-members-list" id="team-members-list">
+                    <!-- Team members will be populated here by JavaScript -->
+                </div>
+                
+                <!-- Export Options -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-outline" onclick="exportTeamData()">
+                        <i class="fas fa-download"></i> Export Team Data
+                    </button>
+                    <button class="btn btn-primary" onclick="sendBatchNotifications()">
+                        <i class="fab fa-whatsapp"></i> Send Team Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Contact Form (Floating) -->
+<div id="quick-contact-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 400px;">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal('quick-contact-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Quick Contact</h2>
+            <p class="modal-subtitle">Get in touch instantly</p>
+        </div>
+        <div class="modal-body">
+            <form id="quick-contact-form">
+                <div class="form-group">
+                    <label for="quick-name">Name *</label>
+                    <input type="text" id="quick-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Phone Number *</label>
+                    <input type="tel" id="quick-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-service">Interested in:</label>
+                    <select id="quick-service" name="service_interest">
+                        <option value="">Select service</option>
+                        <option value="brand-design">Brand Strategy & Design</option>
+                        <option value="social-media">Social Media Marketing</option>
+                        <option value="website">Website Development</option>
+                        <option value="paid-ads">Paid Advertising</option>
+                        <option value="consultation">Free Consultation</option>
+                        <option value="package-starter">Starter Growth Package</option>
+                        <option value="package-business">Business Growth Package</option>
+                        <option value="package-pro">Pro Growth Package</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Quick Message</label>
+                    <textarea id="quick-message" name="message" rows="3" placeholder="Tell us briefly what you need..."></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <button type="button" class="btn btn-whatsapp" onclick="sendQuickWhatsApp()" style="flex: 1;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Commission Calculator Modal -->
+<div id="commission-calculator-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 500px;">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal('commission-calculator-modal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Commission Calculator</h2>
+            <p class="modal-subtitle">Calculate your potential earnings</p>
+        </div>
+        <div class="modal-body">
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="sale-amount">Sale Amount (₹)</label>
+                    <input type="number" id="sale-amount" placeholder="100000" min="1000" step="1000">
+                </div>
+                <div class="form-group">
+                    <label for="team-level">Your Team Level</label>
+                    <select id="team-level">
+                        <option value="1">Level 1 (Direct Referral) - 15%</option>
+                        <option value="2">Level 2 (Sub Affiliate) - 5%</option>
+                        <option value="3">Level 3 (Sub-Sub Affiliate) - 2%</option>
+                    </select>
+                </div>
+                
+                <div class="calculation-result" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="margin: 0 0 10px 0; color: #667eea;">Your Commission</h3>
+                    <div class="commission-breakdown">
+                        <div id="commission-amount" style="font-size: 32px; font-weight: 700; color: #4CAF50;">₹0</div>
+                        <div id="commission-details" style="color: #666; margin-top: 10px;"></div>
                     </div>
                 </div>
                 
-                <div class="affiliate-form">
-                    <h3>Register as an Affiliate</h3>
-                    <form id="affiliate-form">
-                        <div class="form-group">
-                            <input type="text" id="affiliate-name" name="name" placeholder="Your Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="affiliate-email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="affiliate-phone" name="phone" placeholder="Your Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="referrer-code" name="referrer" placeholder="Referrer Code (Optional)">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="affiliate-message" name="message" placeholder="Tell us about your network and experience" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Join Affiliate Program</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="affiliate-structure">
-                <h3>Commission Structure</h3>
-                <div class="structure-tree">
-                    <div class="level level-1">
-                        <div class="level-box">
-                            <h4>Level 1 (Direct Referral)</h4>
-                            <p>15% Commission</p>
-                        </div>
-                    </div>
-                    <div class="level level-2">
-                        <div class="level-box">
-                            <h4>Level 2 (Sub Affiliate)</h4>
-                            <p>5% Commission</p>
-                        </div>
-                    </div>
-                    <div class="level level-3">
-                        <div class="level-box">
-                            <h4>Level 3 (Sub-Sub Affiliate)</h4>
-                            <p>2% Commission</p>
-                        </div>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-primary" onclick="calculateCommission()" style="width: 100%;">
+                    Calculate Commission
+                </button>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">From Ideas to Impact - See What We've Built</h2>
-            <p class="section-subtitle">We've helped startups, creators, and small businesses turn their ideas into scalable digital brands. Here's a peek at our recent projects.</p>
-            
-            <div class="portfolio-tabs">
-                <button class="tab-btn active" onclick="filterPortfolio('all')">All Projects</button>
-                <button class="tab-btn" onclick="filterPortfolio('branding')">Branding & Design</button>
-                <button class="tab-btn" onclick="filterPortfolio('social')">Social Media</button>
-                <button class="tab-btn" onclick="filterPortfolio('websites')">Websites & Funnels</button>
-                <button class="tab-btn" onclick="filterPortfolio('ads')">Paid Advertising</button>
-            </div>
+<!-- Floating Action Buttons -->
+<div class="floating-actions">
+    <button class="floating-btn main-btn" onclick="toggleFloatingMenu()">
+        <i class="fas fa-plus"></i>
+    </button>
+    <div class="floating-menu" id="floating-menu">
+        <button class="floating-btn" onclick="openRequirementsForm()" title="Submit Requirements">
+            <i class="fas fa-clipboard-list"></i>
+        </button>
+        <button class="floating-btn" onclick="openAffiliateForm()" title="Join Affiliate Program">
+            <i class="fas fa-users"></i>
+        </button>
+        <button class="floating-btn" onclick="sendWhatsApp()" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="floating-btn" onclick="openQuickContact()" title="Quick Contact">
+            <i class="fas fa-phone"></i>
+        </button>
+    </div>
+</div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="branding">
-                    <div class="portfolio-image">
-                        <div class="placeholder-img">Brand Design</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Bloom Skincare</h3>
-                        <p>Complete brand identity redesign with visual guidelines</p>
-                        <span class="portfolio-tag">Branding</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="social">
-                    <div class="portfolio-image">
-                        <div class="placeholder-img">Social Campaign</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Tech Startup Campaign</h3>
-                        <p>3-month social media strategy that increased engagement by 300%</p>
-                        <span class="portfolio-tag">Social Media</span>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="websites">
-                    <div class="portfolio-image">
-                        <div class="placeholder-img">Website Design</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>High-converting e-commerce site with automated marketing funnels</p>
-                        <span class="portfolio-tag">Website</span>
-                    </div>
-                </div>
-            </div>
+<!-- Notification Container -->
+<div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 10001;"></div>
 
-            <div class="case-study">
-                <div class="case-study-content">
-                    <h3>Case Study: Bloom Skincare</h3>
-                    <div class="case-details">
-                        <div class="case-item">
-                            <strong>Challenge:</strong> Low social engagement & sales
-                        </div>
-                        <div class="case-item">
-                            <strong>Solution:</strong> Rebranded visuals + 3-month content plan + Instagram ads
-                        </div>
-                        <div class="case-item">
-                            <strong>Result:</strong> 2.3x sales growth in 60 days
-                        </div>
-                    </div>
-                    <button class="btn btn-outline" onclick="viewFullPortfolio()">View Full Portfolio</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Team Section -->
-    <section class="team">
-        <div class="container">
-            <h2 class="section-title">Meet Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <div class="placeholder-avatar">SM</div>
-                    </div>
-                    <h3>Shubham Mishra</h3>
-                    <p class="member-role">Founder - Strategy & Creative Direction</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <div class="placeholder-avatar">SS</div>
-                    </div>
-                    <h3>Swarnika Srivastava</h3>
-                    <p class="member-role">Co-Founder - Operations & Automation</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">We're ready when you are.</h2>
-            <p class="section-subtitle">Book a free discovery call or send us your ideas - we'll reply within 24 hours with your next steps.</p>
-            
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="business" name="business" placeholder="Business Name">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Message / Project Details" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
-                    </form>
-                </div>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2 class="section-title">From Ideas to Impact - See What We've Built</h2>
+                <p class="section-subtitle">We've helped startups, creators, and small businesses turn their ideas into scalable digital brands. Here's a peek at our recent projects.</p>
                 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>Dotdigitagency@gmail.com</p>
-                            <p>contact@dotdigitalagency.in</p>
+                <div class="portfolio-tabs">
+                    <button class="tab-btn active" onclick="filterPortfolio('all')">All Projects</button>
+                    <button class="tab-btn" onclick="filterPortfolio('branding')">Branding & Design</button>
+                    <button class="tab-btn" onclick="filterPortfolio('social')">Social Media</button>
+                    <button class="tab-btn" onclick="filterPortfolio('websites')">Websites & Funnels</button>
+                    <button class="tab-btn" onclick="filterPortfolio('ads')">Paid Advertising</button>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="branding">
+                        <div class="portfolio-image">
+                            <div class="placeholder-img">Brand Design</div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Bloom Skincare</h3>
+                            <p>Complete brand identity redesign with visual guidelines</p>
+                            <span class="portfolio-tag">Branding</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <p>WhatsApp: +91 97738 63151</p>
-                            <p>+91 80040 15099</p>
+                    <div class="portfolio-item" data-category="social">
+                        <div class="portfolio-image">
+                            <div class="placeholder-img">Social Campaign</div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Tech Startup Campaign</h3>
+                            <p>3-month social media strategy that increased engagement by 300%</p>
+                            <span class="portfolio-tag">Social Media</span>
                         </div>
                     </div>
-                    <div class="contact-buttons">
-                        <button class="btn btn-primary" onclick="bookCall()">Book My Free Call</button>
-                        <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
-                            <i class="fab fa-whatsapp"></i> WhatsApp Us
-                        </button>
+                    <div class="portfolio-item" data-category="websites">
+                        <div class="portfolio-image">
+                            <div class="placeholder-img">Website Design</div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>E-commerce Platform</h3>
+                            <p>High-converting e-commerce site with automated marketing funnels</p>
+                            <span class="portfolio-tag">Website</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-study-content">
+                        <h3>Case Study: Bloom Skincare</h3>
+                        <div class="case-details">
+                            <div class="case-item">
+                                <strong>Challenge:</strong> Low social engagement & sales
+                            </div>
+                            <div class="case-item">
+                                <strong>Solution:</strong> Rebranded visuals + 3-month content plan + Instagram ads
+                            </div>
+                            <div class="case-item">
+                                <strong>Result:</strong> 2.3x sales growth in 60 days
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" onclick="viewFullPortfolio()">View Full Portfolio</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">DotGrow Digital Agency</span>
-                    <p>Growing brands in the digital age</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#packages">Packages</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#affiliate">Affiliate Program</a>
+        <!-- Team Section -->
+        <section class="team">
+            <div class="container">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">SM</div>
+                        </div>
+                        <h3>Shubham Mishra</h3>
+                        <p class="member-role">Founder - Strategy & Creative Direction</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">SS</div>
+                        </div>
+                        <h3>Swarnika Srivastava</h3>
+                        <p class="member-role">Co-Founder - Operations & Automation</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 DotGrow Digital Agency. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">We're ready when you are.</h2>
+                <p class="section-subtitle">Book a free discovery call or send us your ideas - we'll reply within 24 hours with your next steps.</p>
+                
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="business" name="business" placeholder="Business Name">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Message / Project Details" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p>Dotdigitagency@gmail.com</p>
+                                <p>contact@dotdigitalagency.in</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <p>WhatsApp: +91 97738 63151</p>
+                                <p>+91 80040 15099</p>
+                            </div>
+                        </div>
+                        <div class="contact-buttons">
+                            <button class="btn btn-primary" onclick="bookCall()">Book My Free Call</button>
+                            <button class="btn btn-whatsapp" onclick="sendWhatsApp()">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Us
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <span class="logo-text">DotGrow Digital Agency</span>
+                        <p>Growing brands in the digital age</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#packages">Packages</a>
+                        <a href="#portfolio">Portfolio</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#affiliate">Affiliate Program</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 DotGrow Digital Agency. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="script.js">    </script>
+    </body>
+    </html>
