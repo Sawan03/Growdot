@@ -58,6 +58,28 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.nav-logo .logo {
+  width: 120px;          /* adjust size */
+  height: auto;
+  animation: popUp 0.8s ease-in-out;
+  transform-origin: center;
+}
+
+/* Pop-up animation (only once) */
+@keyframes popUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .nav-menu {
     display: flex;
